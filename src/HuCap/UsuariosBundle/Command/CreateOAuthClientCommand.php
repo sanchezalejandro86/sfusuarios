@@ -53,7 +53,7 @@ class CreateOAuthClientCommand extends ContainerAwareCommand
 				$client->getPublicId(),
 				$client->getSecret()));
 
-		$customers = $container->get('doctrine')->getRepository('AppBundle:Customer')->findAll();
+		$customers = $container->get('doctrine')->getRepository('HuCapUsuariosBundle:Client')->findAll();
 
 		foreach ($customers as $customer) {
 			$queryData = [];
