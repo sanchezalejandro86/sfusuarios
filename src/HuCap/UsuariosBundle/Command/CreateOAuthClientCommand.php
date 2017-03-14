@@ -53,20 +53,20 @@ class CreateOAuthClientCommand extends ContainerAwareCommand
 				$client->getPublicId(),
 				$client->getSecret()));
 
-		$customers = $container->get('doctrine')->getRepository('HuCapUsuariosBundle:Client')->findAll();
+// 		$customers = $container->get('doctrine')->getRepository('HuCapUsuariosBundle:Client')->findAll();
 
-		foreach ($customers as $customer) {
-			$queryData = [];
-			$queryData['client_id'] = $client->getPublicId();
-			$queryData['redirect_uri'] = $client->getRedirectUris()[0];
-			$queryData['response_type'] = 'code';
-			$authRequest = new Request($queryData);
+// 		foreach ($customers as $customer) {
+// 			$queryData = [];
+// 			$queryData['client_id'] = $client->getPublicId();
+// 			$queryData['redirect_uri'] = $client->getRedirectUris()[0];
+// 			$queryData['response_type'] = 'code';
+// 			$authRequest = new Request($queryData);
 
-			$oauthServer->finishClientAuthorization(true, $customer, $authRequest, $grantType);
+// 			$oauthServer->finishClientAuthorization(true, $customer, $authRequest, $grantType);
 
-			$output->writeln(sprintf("<info>Customer <comment>%s</comment> linked to client <comment>%s</comment></info>",
-					$customer->getId(),
-					$client->getName()));
-		}
+// 			$output->writeln(sprintf("<info>Customer <comment>%s</comment> linked to client <comment>%s</comment></info>",
+// 					$customer->getId(),
+// 					$client->getName()));
+// 		}
 	}
 }
