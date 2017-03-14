@@ -1,0 +1,52 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8">
+        	<div class="page-header">
+          		<img src="{{ asset('img/logo.jpg') }}" class="img-responsive"></img>
+        	</div>
+        	<div class="panel panel-info">
+        		<div class="panel-heading">
+            		<h3 class="panel-title">Acceso al Sistema</h3>
+          		</div>
+          		<div class="panel-body">
+        	  		<div class="row">
+        				<div class="login-social col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <a class="btn btn-social btn-fb" href="auth/facebook"><i class="fa fa-facebook"></i>Ingresar con Facebook </a>
+                            <a class="btn btn-social btn-gplus" href="auth/google"><i class="fa fa-google"></i>Ingresar con Google&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                            <a class="btn btn-social btn-in" href="auth/linkedin"><i class="fa fa-linkedin"></i>Ingresar con Linkedin</a>
+                        </div>
+        			    <div class="col-xs-12 col-sm-12 col-md-6" style="border-left:1px solid #ccc">
+        					<form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal">
+        						<fieldset>
+        							{% if csrf_token %}
+        						        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        						    {% endif %}
+        							<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans }}" class="form-control input-md">
+        	  						<div class="spacing">
+        		  						<input type="checkbox" id="remember_me" name="_remember_me" value="on"><small> {{ 'security.login.remember_me'|trans }}</small>
+        		  					</div>
+        	  						<input type="password" id="password" name="_password" required="required" placeholder="{{ 'security.login.password'|trans }}" class="form-control input-md">
+        	  						<div class="spacing">
+        		  						<a href="#"><small> Olvid&oacute; su contrase&ntilde;a?</small></a><br/>
+        		  					</div>
+        	  						<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-info btn-sm pull-right">
+        						</fieldset>
+        					</form>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="row">
+            	<div class="col-sm-12">
+                	<span style="color:#fff"><strong> &copy; Hucap</strong>.com // Todos los derechos reservados.</span>
+            	</div>
+        	</div>
+		</div>
+	</div>
+</div>
