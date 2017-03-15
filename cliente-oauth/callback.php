@@ -1,5 +1,7 @@
 <?php
 
+include 'config.php';
+
 function curl_post($url, array $post = NULL, array $options = array())
 {
     $defaults = array(
@@ -25,19 +27,19 @@ function curl_post($url, array $post = NULL, array $options = array())
 
 session_start();
 
-if($_REQUEST['error'] === "access_denied"){
+if(isset($_REQUEST['error']) && $_REQUEST['error'] === "access_denied"){
     header('HTTP/1.0 403 Forbidden');
     echo 'No esta autorizado!';
     exit;
 }
 
-$urlToken = 'http://usuarios.hucap.com/app_dev.php/oauth/v2/token';
+$urlToken = $host . '/oauth/v2/token';
 $params = [
-    'client_id' => '1khc8rvtiltwks0c08o4skg08g8sws84sgwkok8gg0wg8o40o0',
+    'client_id' => $client_id,
     'grant_type' => 'authorization_code',
-    'client_secret' => '4dwc60fi5b40c0kg4kgk4ocock0ggs4sk488ogo4s4wg4444gw',
+    'client_secret' => $secret,
 //     'scope' => '',
-    'redirect_uri' => 'http://cliente-oauth/callback.php',
+    'redirect_uri' => $redirect_uri,
     'code' => $_REQUEST['code']
 ];
 
@@ -46,12 +48,12 @@ $jsonResponse = json_decode($response);
 
 $_SESSION['auth-token'] = $jsonResponse;
 
-$resource = 'http://usuarios.hucap.com/app_dev.php/api/user';
+$resource = $host . '/api/user';
 
-$response = curl_post($resource, $params, [CURLOPT_HTTPHEADER => 'Authorization: Bearer ' . $_SESSION['auth-token']['access_token']]);
+$response = curl_post($resource, [], [CURLOPT_HTTPHEADER => ['Authorization: Bearer ' . $_SESSION['auth-token']->access_token]]);
+
 $user = json_decode($response);
-
-$_SESSION['user'] = $user['username'];
+$_SESSION['user'] = $user->username;
 
 header('Location: http://cliente-oauth/index.php');
 die();
