@@ -17,9 +17,9 @@
           		<div class="panel-body">
         	  		<div class="row">
         				<div class="login-social col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                            <a class="btn btn-social btn-fb" href="auth/facebook"><i class="fa fa-facebook"></i>Ingresar con Facebook </a>
-                            <a class="btn btn-social btn-gplus" href="auth/google"><i class="fa fa-google"></i>Ingresar con Google&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                            <a class="btn btn-social btn-in" href="auth/linkedin"><i class="fa fa-linkedin"></i>Ingresar con Linkedin</a>
+                            <a class="btn btn-social btn-fb" href="#"><i class="fa fa-facebook"></i>Ingresar con Facebook </a>
+                            <a class="btn btn-social btn-gplus" href="{{ path("hwi_oauth_service_redirect", { 'service': 'google' }) }}"><i class="fa fa-google"></i>Ingresar con Google&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                            <a class="btn btn-social btn-in" href="{{ path("hwi_oauth_service_redirect", { 'service': 'linkedin' }) }}"><i class="fa fa-linkedin"></i>Ingresar con Linkedin</a>
                         </div>
         			    <div class="col-xs-12 col-sm-12 col-md-6" style="border-left:1px solid #ccc">
         					<form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal">

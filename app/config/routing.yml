@@ -1,3 +1,15 @@
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+
 hucap_usuarios:
     resource: "@HuCapUsuariosBundle/Controller/"
     type:     annotation
@@ -11,3 +23,15 @@ fos_oauth_server_token:
 
 fos_oauth_server_authorize:
     resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
+    
+#facebook_login:
+#    path: /login/check-facebook
+
+google_login:
+    path: /login/check-google
+
+linkedin_login:
+    path: /login/check-linkedin
+
+#custom_login:
+#    path: /login/check-custom

@@ -17,3 +17,10 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+    
+    # Oauth login
+    google_client_id:		552336978728-mgkgvfgkoe2ppgj4pm7g10bd1cgu7lh2.apps.googleusercontent.com
+    google_client_secret:	BZlz7K49Ve73dBG_274MHiQx
+
+    linkedin_client_id:		78lmssa4iu7adb
+    linkedin_client_secret:	pVMRqe99Nx6Ty3mz

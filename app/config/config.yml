@@ -86,3 +86,18 @@ fos_oauth_server:
     auth_code_class:     HuCap\UsuariosBundle\Entity\AuthCode
     service:
         user_provider: fos_user.user_provider.username
+        
+hwi_oauth:
+    # list of names of the firewalls in which this bundle is active, this setting MUST be set
+    firewall_names: [secured_area]
+    resource_owners:
+        google:
+            type:                google
+            client_id:           %google_client_id%
+            client_secret:       %google_client_secret%
+            scope:               "email profile"
+        linkedin:
+            type:                linkedin
+            client_id:           %linkedin_client_id%
+            client_secret:       %linkedin_client_secret%
+            scope:               "r_basicprofile r_emailaddress rw_company_admin"

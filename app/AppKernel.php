@@ -18,6 +18,7 @@ class AppKernel extends Kernel
         	new FOS\UserBundle\FOSUserBundle(),
         	new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
             new HuCap\UsuariosBundle\HuCapUsuariosBundle(),
+        	new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

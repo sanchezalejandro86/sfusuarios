@@ -9,3 +9,10 @@ services:
         arguments: ["@security.http_utils"]
         calls:
             - [ setContainer, [ "@service_container" ] ]
+    
+    my.oauth_aware.user_provider.service:
+        class: HuCap\UsuariosBundle\Security\Core\User\FOSUBUserProvider
+        arguments:
+            - '@fos_user.user_manager'
+            - google: googleId
+              linkedin: linkedinId
